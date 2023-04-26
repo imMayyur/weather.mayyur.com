@@ -17,11 +17,11 @@ type option = {
 
 type cityOption = {
   value: {
-    latitude: string;
-    longitude: string;
-    countryCode: string;
-    name: string;
-    stateCode: string;
+    latitude: string | null | undefined;
+    longitude: string | null | undefined;
+    countryCode: string | null | undefined;
+    name: string | null | undefined;
+    stateCode: string | null | undefined;
   };
   label: string;
 } | null;

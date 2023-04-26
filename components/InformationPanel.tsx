@@ -66,7 +66,7 @@ function InformationPanel({ city, lat, long, results }: Props) {
           <div className="flex-1 flex justify-between items-center">
             <p className="font-extralight">Sunrise</p>
             <p className="uppercase text-2xl">
-              {new Date(results?.daily?.sunrise[0]).toLocaleTimeString('en-GB', {
+              {new Date(results?.daily?.sunrise[0].toString()).toLocaleTimeString('en-GB', {
                 hour: 'numeric',
                 minute: 'numeric',
                 hour12: true,
@@ -79,7 +79,7 @@ function InformationPanel({ city, lat, long, results }: Props) {
           <div className="flex-1 flex justify-between items-center">
             <p className="font-extralight">Sunset</p>
             <p className="uppercase text-2xl">
-              {new Date(results?.daily?.sunset[0]).toLocaleTimeString('en-GB', {
+              {new Date(results?.daily?.sunset[0].toString()).toLocaleTimeString('en-GB', {
                 hour: 'numeric',
                 minute: 'numeric',
                 hour12: true,

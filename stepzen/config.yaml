@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: curl_import_config
+      authentication_a436afc223: mountshasta::stepzen.io+1000::78a3f4630ab3ad8f5603d529bc854d6a45e5ee7ce79de4f417d9c96b903a6fd8

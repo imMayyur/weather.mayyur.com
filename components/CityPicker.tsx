@@ -80,18 +80,6 @@ function CityPicker() {
           <Select
             value={selectedCity}
             onChange={handleSelectedCity}
-            options={
-              City.getCitiesOfCountry(selectedCountry?.value?.isoCode)?.map((state) => ({
-                value: {
-                  latitude: state.latitude,
-                  longitude: state.longitude,
-                  countryCode: state.countryCode,
-                  name: state.name,
-                  stateCode: state.stateCode,
-                },
-                label: state.name,
-              })) || []
-            }
             styles={{
               option: (option, { isDisabled, isFocused, isSelected }) => ({
                 ...option,
@@ -99,6 +87,18 @@ function CityPicker() {
                 color: isSelected ? 'white' : isFocused ? 'white' : 'black',
               }),
             }}
+            options={
+              City?.getCitiesOfCountry(selectedCountry?.value?.isoCode)?.map((city) => ({
+                value: {
+                  latitude: city.latitude,
+                  longitude: city.longitude,
+                  countryCode: city.countryCode,
+                  name: city.name,
+                  stateCode: city.stateCode,
+                },
+                label: city.name,
+              })) || []
+            }
           />
         </div>
       )}

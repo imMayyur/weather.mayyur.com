@@ -8,7 +8,7 @@ type Props = {
 function TempChart({ results }: Props) {
   const hourly = results?.hourly?.time
     ?.map((time) =>
-      new Date(time).toLocaleString('en-US', {
+      new Date(time.toString()).toLocaleString('en-US', {
         hour: 'numeric',
         hour12: false,
       })

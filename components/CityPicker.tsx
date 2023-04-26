@@ -1,5 +1,6 @@
 'use client';
 
+import { ColourOption } from '@/lib/colorData';
 import { GlobeIcon } from '@heroicons/react/solid';
 import { City, Country } from 'country-state-city';
 import { useRouter } from 'next/navigation';

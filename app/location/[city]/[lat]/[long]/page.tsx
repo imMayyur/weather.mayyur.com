@@ -61,8 +61,8 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
           <div className="pb-5">
             <h2 className="text-xl font-bold">Todays Overwiew</h2>
             <p className="text-sm text-gray-400">
-              Last Updated at: {moment(results.current_weather.time).format('MMMM Do YYYY, h:mm:ss A')} (
-              {moment(results.current_weather.time).fromNow()})
+              Last Updated at: {moment(results.current_weather.time.toString()).format('MMMM Do YYYY, h:mm:ss A')} (
+              {moment(results.current_weather.time.toString()).fromNow()})
             </p>
           </div>
           <div className="m-2 mb-10">

@@ -1,11 +1,10 @@
 'use client';
 
-import { ColourOption } from '@/lib/colorData';
 import { GlobeIcon } from '@heroicons/react/solid';
 import { City, Country } from 'country-state-city';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import Select, { StylesConfig } from 'react-select';
+import Select from 'react-select';
 
 type option = {
   value: {
@@ -36,38 +35,6 @@ const options = Country.getAllCountries().map((country) => ({
   label: country.name,
 }));
 
-const dot = (color = 'transparent') => ({
-  alignItems: 'center',
-  display: 'flex',
-
-  ':before': {
-    backgroundColor: color,
-    borderRadius: 10,
-    content: '" "',
-    display: 'block',
-    marginRight: 8,
-    height: 10,
-    width: 10,
-  },
-});
-
-const colourStyles: StylesConfig<ColourOption> = {
-  control: (styles) => ({ ...styles, backgroundColor: 'white' }),
-  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    const color = '#394F68';
-    return {
-      ...styles,
-      backgroundColor: isDisabled ? undefined : isSelected ? color : isFocused ? color : undefined,
-      color: isSelected ? 'white' : isFocused ? 'white' : 'black',
-      cursor: isDisabled ? 'not-allowed' : 'default',
-      ':active': {
-        ...styles[':active'],
-        backgroundColor: !isDisabled ? (isSelected ? data.color : color) : undefined,
-      },
-    };
-  },
-};
-
 function CityPicker() {
   const [selectedCountry, setSelectedCountry] = useState<option>(null);
   const [selectedCity, setSelectedCity] = useState<cityOption>(null);
@@ -90,7 +57,18 @@ function CityPicker() {
           <GlobeIcon className="h-5 w-5 text-white" />
           <label htmlFor="country">Country</label>
         </div>
-        <Select value={selectedCountry} onChange={handleSelectedCountry} options={options} styles={colourStyles} />
+        <Select
+          value={selectedCountry}
+          onChange={handleSelectedCountry}
+          options={options}
+          styles={{
+            option: (option, { isDisabled, isFocused, isSelected }) => ({
+              ...option,
+              backgroundColor: isDisabled ? undefined : isSelected ? '#394F68' : isFocused ? '#394F68' : undefined,
+              color: isSelected ? 'white' : isFocused ? 'white' : 'black',
+            }),
+          }}
+        />
       </div>
 
       {selectedCountry && (
@@ -114,7 +92,13 @@ function CityPicker() {
                 label: state.name,
               })) || []
             }
-            styles={colourStyles}
+            styles={{
+              option: (option, { isDisabled, isFocused, isSelected }) => ({
+                ...option,
+                backgroundColor: isDisabled ? undefined : isSelected ? '#394F68' : isFocused ? '#394F68' : undefined,
+                color: isSelected ? 'white' : isFocused ? 'white' : 'black',
+              }),
+            }}
           />
         </div>
       )}
